@@ -6,7 +6,7 @@
   <version>1.0.0-SNAPSHOT</version>
 
   <properties>
-    <java.version>1.7</java.version>
+    <java.version>1.8</java.version>
 
     <plugin.maven-compiler-plugin.version>3.6.0</plugin.maven-compiler-plugin.version>
     <plugin.jetty-maven-plugin.version>8.1.16.v20140903</plugin.jetty-maven-plugin.version>
