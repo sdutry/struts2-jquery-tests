@@ -1,0 +1,165 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>be.sdutry.struts2.jquery</groupId>
+  <artifactId>struts2-jquery-tests</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <properties>
+    <java.version>1.7</java.version>
+
+    <plugin.maven-compiler-plugin.version>3.6.0</plugin.maven-compiler-plugin.version>
+    <plugin.jetty-maven-plugin.version>8.1.16.v20140903</plugin.jetty-maven-plugin.version>
+
+    <struts2.version>2.5.5</struts2.version>
+    <struts2-jquery.version>4.0.2-SNAPSHOT</struts2-jquery.version>
+    <selenium.version>3.0.1</selenium.version>
+    <junit.version>4.12</junit.version>
+    <htmlunit-driver.version>2.23</htmlunit-driver.version>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>jetty-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+      </plugin>
+      
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+	  <version>${plugin.maven-compiler-plugin.version}</version>
+          <configuration>
+            <source>${java.version}</source>
+            <target>${java.version}</target>
+          </configuration>
+        </plugin>
+
+        <plugin>
+          <groupId>org.mortbay.jetty</groupId>
+          <artifactId>jetty-maven-plugin</artifactId>
+	  <version>${plugin.jetty-maven-plugin.version}</version>
+          <configuration>
+            <stopKey>CTRL+C</stopKey>
+            <stopPort>8999</stopPort>
+            <scanIntervalSeconds>10</scanIntervalSeconds>
+          </configuration>
+          <executions>
+            <execution>
+              <id>start-jetty</id>
+              <phase>pre-integration-test</phase>
+              <goals>
+                <goal>start</goal>
+              </goals>
+              <configuration>
+                <scanIntervalSeconds>0</scanIntervalSeconds>
+                <daemon>true</daemon>
+              </configuration>
+            </execution>
+            <execution>
+              <id>stop-jetty</id>
+              <phase>post-integration-test</phase>
+              <goals>
+                <goal>stop</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>2.19.1</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>integration-test</goal>
+                <goal>verify</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.struts</groupId>
+      <artifactId>struts2-convention-plugin</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.jgeppert.struts2.jquery</groupId>
+      <artifactId>struts2-jquery-plugin</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-server</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>htmlunit-driver</artifactId>
+    </dependency>
+  </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.struts</groupId>
+        <artifactId>struts2-convention-plugin</artifactId>
+        <version>${struts2.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.jgeppert.struts2.jquery</groupId>
+        <artifactId>struts2-jquery-plugin</artifactId>
+        <version>${struts2-jquery.version}</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+	<version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-server</artifactId>
+        <version>${selenium.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>htmlunit-driver</artifactId>
+	<version>${htmlunit-driver.version}</version>
+        <scope>test</scope>
+      </dependency>
+      
+    </dependencies>
+  </dependencyManagement>
+</project>
