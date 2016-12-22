@@ -58,6 +58,13 @@
             <stopPort>8999</stopPort>
             <scanIntervalSeconds>10</scanIntervalSeconds>
           </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.eclipse.jetty</groupId>
+              <artifactId>jetty-jsp</artifactId>
+              <version>${plugin.jetty-maven-plugin.version}</version>
+            </dependency>
+          </dependencies>
           <executions>
             <execution>
               <id>start-jetty</id>
